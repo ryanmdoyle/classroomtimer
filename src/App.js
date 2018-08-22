@@ -62,6 +62,24 @@ class App extends Component {
       this.interval = setInterval(this.runTimer, 1000)
     }
   }
+
+  singleChange(value) {
+    if (value > 0) {
+      if (!this.state.running) {
+        this.setState({
+          secondsLeft: this.state.secondsLeft + value
+        })
+      }
+    }
+    
+    if (value < 0) {
+      if (!this.state.running && this.state.secondsLeft > 60) {
+        this.setState({
+          secondsLeft: this.state.secondsLeft + value
+        })
+      }
+    }
+  }
   
   
   render() {
@@ -70,7 +88,9 @@ class App extends Component {
         <div id="timer">
           <div id="display" className="timer-division">{this.formatMinutes(this.state.secondsLeft)}</div>
           <div id="controls" className="timer-division">
-          <button onClick={() => {this.startStop()}}>Start/Stop</button>
+          <button onClick={() => {this.startStop()}}><i class="material-icons">{this.state.running ? "pause" : "play_arrow"}</i></button>
+          <button onClick={() => {this.singleChange(-60)}}><i class="material-icons">remove</i></button>
+          <button onClick={() => {this.singleChange(60)}}><i class="material-icons">add</i></button>
           <button onClick={() => {this.changeTimer(5)}}>5</button>
           <button onClick={() => {this.changeTimer(10)}}>10</button>
           <button onClick={() => {this.changeTimer(15)}}>15</button>
