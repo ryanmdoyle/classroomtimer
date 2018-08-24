@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import midGong from "./midGong.m4a";
-import endGong from "./endGong.m4a";
+import endGong from "./midGong.m4a";
+import midGong from "./endGong.m4a";
 import './App.css';
 
 class App extends Component {
