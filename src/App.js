@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import beep from "./timerBeep.wav";
+import gong from "./gong.wav";
 import './App.css';
 
 class App extends Component {
@@ -7,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       secondsLeft: 600,
-      running: false 
+      running: false,
+      halfway: 300
     }
 
     this.formatMinutes = this.formatMinutes.bind(this);
@@ -32,6 +34,10 @@ class App extends Component {
 
   runTimer() {
     if (this.state.running === true && this.state.secondsLeft > 0) {
+      if (this.state.secondsLeft === this.state.halfway+1) {
+        const gongSound = new Audio(gong);
+        gongSound.play()
+      }
       this.setState({
         secondsLeft: this.state.secondsLeft - 1
       })
@@ -40,8 +46,9 @@ class App extends Component {
       this.setState({
         running: false
       })
-      const audio = new Audio(beep);
-      audio.play()
+      const beepSound = new Audio(beep);
+      beepSound.volume = 0.7;
+      beepSound.play()
       clearInterval(this.interval);
     }
   }
@@ -57,7 +64,8 @@ class App extends Component {
 
     if (!this.state.running) {
       this.setState ({
-        running: true
+        running: true,
+        halfway: this.state.secondsLeft / 2
       })
       this.interval = setInterval(this.runTimer, 1000)
     }
@@ -88,9 +96,9 @@ class App extends Component {
         <div id="timer">
           <div id="display" className="timer-division">{this.formatMinutes(this.state.secondsLeft)}</div>
           <div id="controls" className="timer-division">
-          <button onClick={() => {this.startStop()}}><i class="material-icons">{this.state.running ? "pause" : "play_arrow"}</i></button>
-          <button onClick={() => {this.singleChange(-60)}}><i class="material-icons">remove</i></button>
-          <button onClick={() => {this.singleChange(60)}}><i class="material-icons">add</i></button>
+          <button onClick={() => {this.startStop()}}><i className="material-icons">{this.state.running ? "pause" : "play_arrow"}</i></button>
+          <button onClick={() => {this.singleChange(-60)}}><i className="material-icons">remove</i></button>
+          <button onClick={() => {this.singleChange(60)}}><i className="material-icons">add</i></button>
           <button onClick={() => {this.changeTimer(5)}}>5</button>
           <button onClick={() => {this.changeTimer(10)}}>10</button>
           <button onClick={() => {this.changeTimer(15)}}>15</button>

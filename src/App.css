@@ -3,6 +3,8 @@ body {
   background-color: #16A085;
   background-image: linear-gradient(154deg, #F4D03F 0%, #16A085 100%);
   font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 200px #00000073;
+
 }
 
 button {
@@ -15,7 +17,7 @@ button {
   padding: 15px;
   min-height: 4vh;
   min-width: 40px;
-  opacity: 0.5;
+  opacity: 0.25;
 }
 
 button:focus {
@@ -23,11 +25,11 @@ button:focus {
 }
 
 button:hover {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .timer-division {
-  padding: 25px;
+  padding: 1%;
 }
 
 #screen {
