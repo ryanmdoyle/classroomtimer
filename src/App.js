@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import beep from "./timerBeep.wav";
-import gong from "./gong.wav";
+import midGong from "./midGong.m4a";
+import endGong from "./endGong.m4a";
 import './App.css';
 
 class App extends Component {
@@ -35,8 +35,8 @@ class App extends Component {
   runTimer() {
     if (this.state.running === true && this.state.secondsLeft > 0) {
       if (this.state.secondsLeft === this.state.halfway+1) {
-        const gongSound = new Audio(gong);
-        gongSound.play()
+        const halfwaySound = new Audio(midGong);
+        halfwaySound.play()
       }
       this.setState({
         secondsLeft: this.state.secondsLeft - 1
@@ -46,9 +46,8 @@ class App extends Component {
       this.setState({
         running: false
       })
-      const beepSound = new Audio(beep);
-      beepSound.volume = 0.7;
-      beepSound.play()
+      const endSound = new Audio(endGong);
+      endSound.play()
       clearInterval(this.interval);
     }
   }
