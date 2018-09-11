@@ -42,7 +42,7 @@ class App extends Component {
         secondsLeft: this.state.secondsLeft - 1
       })
     }
-    if (this.state.secondsLeft === 0) {
+    if (this.state.secondsLeft === 0 && this.state.running === true) {
       this.setState({
         running: false
       })
@@ -61,7 +61,7 @@ class App extends Component {
       clearInterval(this.interval);
     } 
 
-    if (!this.state.running) {
+    if (!this.state.running && this.state.secondsLeft !== 0) {
       this.setState ({
         running: true,
         halfway: this.state.secondsLeft / 2
