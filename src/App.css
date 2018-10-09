@@ -1,10 +1,9 @@
 body {
   margin: 0;
-  background-color: #16A085;
-  background-image: linear-gradient(154deg, rgb(21, 138, 93) 0%, #16A085 100%);
+  background-color: #23ce7f;
+  background-image: linear-gradient(112deg, #23ce7f 9%, #a451c8 100%);
   font-family: sans-serif;
   text-shadow: 1px 1px 200px #00000073;
-
 }
 
 button {
