@@ -1,8 +1,8 @@
 body {
   margin: 0;
   background-color: #16A085;
-  background-image: linear-gradient(154deg, #F4D03F 0%, #16A085 100%);
-  font-family: 'Raleway', sans-serif;
+  background-image: linear-gradient(154deg, rgb(21, 138, 93) 0%, #16A085 100%);
+  font-family: sans-serif;
   text-shadow: 1px 1px 200px #00000073;
 
 }
@@ -22,7 +22,7 @@ button {
 
 button:focus {
   outline:0;
-}
+}yarn
 
 button:hover {
   opacity: 0.8;
