@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import {useSpring, animated} from 'react-spring'
 
 const SettingsPanelStyled = styled.div`
-  position: absolute;
-  width: 300px;
+  position: fixed;
+  width: 400px;
+  height: 100vh;
   background-color: grey;
   color: white;
+  padding-top: 4rem;
+  box-shadow: 0 0 3rem 0 black;
 `;
 
 const SettingsPanel = () => {
