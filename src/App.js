@@ -5,7 +5,7 @@ import './App.css';
 import MainTimer from './components/MainTimer'
 import SettingsButton from './components/SettingsButton';
 import SettingsPanel from './components/SettingsPanel';
-import {Spring} from 'react-spring/renderprops'
+import { Spring } from 'react-spring/renderprops'
 
 const MainTimerHolder = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <>
         {/* ADD SPRING HERE FOR SETTINGS DISPLAY */}
-        {this.state.settings && <SettingsPanel /> }
+        {this.state.settings && <SettingsPanel />}
         <SettingsButton showSettings={this.showSettings} />
         <MainTimerHolder>
           <MainTimer />

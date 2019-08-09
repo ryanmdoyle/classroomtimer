@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import TimingButton from './TimingButton';
 import SubMinButton from './SubMinButton';
@@ -12,16 +13,16 @@ const ButtonsRowStyled = styled.div`
   justify-content: space-between;
   opacity: 0.1;
   transition: opacity 0.5s;
-  
   :hover {
     opacity: 0.8;
     transition: opacity 0.5s;
   }
-
 `;
 
 const ButtonsContainer = (props) => {
-  const { adjustTimer, subMinute, addMinute, startStop, running } = props;
+  const {
+    adjustTimer, subMinute, addMinute, startStop, running,
+  } = props;
   return (
     <ButtonsRowStyled>
       <StartStopButton startStop={startStop} running={running} />
@@ -34,6 +35,14 @@ const ButtonsContainer = (props) => {
       <AddMinButton addMinute={addMinute} running={running} />
     </ButtonsRowStyled>
   );
+};
+
+ButtonsContainer.propTypes = {
+  adjustTimer: PropTypes.func.isRequired,
+  subMinute: PropTypes.func.isRequired,
+  addMinute: PropTypes.func.isRequired,
+  startStop: PropTypes.func.isRequired,
+  running: PropTypes.bool.isRequired,
 };
 
 export default ButtonsContainer;

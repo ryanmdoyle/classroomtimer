@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const SettingsCog = styled.button`
   position: fixed;
@@ -15,12 +16,14 @@ const SettingsCog = styled.button`
   }
 `;
 
-const SettingsButton = ({showSettings}) => {
-    return (
-        <SettingsCog onClick={() => {showSettings()}}>
-          <i class="fa fa-cog"></i>
-        </SettingsCog>
-    );
+const SettingsButton = ({ showSettings }) => (
+  <SettingsCog onClick={() => { showSettings(); }}>
+    <i className="fa fa-cog" />
+  </SettingsCog>
+);
+
+SettingsButton.propTypes = {
+  showSettings: PropTypes.bool.isRequired,
 };
 
 export default SettingsButton;

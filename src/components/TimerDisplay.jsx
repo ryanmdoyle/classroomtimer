@@ -12,12 +12,10 @@ const Display = styled.div`
   }
 `;
 
-const TimerDisplay = ({ secondsLeft }) => {
-  return (
-    <Display>
-      <h1>{formatMinutes(secondsLeft)}</h1>
-    </Display>
-  );
-};
+const TimerDisplay = ({ secondsLeft }) => (
+  <Display>
+    <h1>{formatMinutes(secondsLeft)}</h1>
+  </Display>
+);
 
 export default TimerDisplay;
