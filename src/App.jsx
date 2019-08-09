@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import './App.css';
-import MainTimer from './components/MainTimer'
+import MainTimer from './components/MainTimer';
 import SettingsButton from './components/SettingsButton';
 import SettingsPanel from './components/SettingsPanel';
-import { Spring } from 'react-spring/renderprops'
 
 const MainTimerHolder = styled.div`
   display: flex;
@@ -20,21 +19,24 @@ class App extends Component {
     super(props);
     this.state = {
       settings: false,
-    }
+    };
   }
 
   showSettings = () => {
+    // eslint-disable-next-line react/no-access-state-in-setstate
     const displaySettings = !this.state.settings;
     this.setState({
-      settings: displaySettings
-    })
+      settings: displaySettings,
+    });
   }
 
   render() {
+    // eslint-disable-next-line react/destructuring-assignment
+    const { settings } = this.state.settings;
     return (
       <>
         {/* ADD SPRING HERE FOR SETTINGS DISPLAY */}
-        {this.state.settings && <SettingsPanel />}
+        {settings && <SettingsPanel />}
         <SettingsButton showSettings={this.showSettings} />
         <MainTimerHolder>
           <MainTimer />
