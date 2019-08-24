@@ -29,10 +29,14 @@ class App extends Component {
 
   render() {
     const { settings } = this.state;
+
     return (
       <>
         {/* ADD SPRING HERE FOR SETTINGS DISPLAY */}
-        {settings && <SettingsPanel />}
+        {settings
+          && (
+          <SettingsPanel />
+          )}
         <SettingsButton toggleSettings={this.toggleSettings} />
         <Clock />
         <MainTimerHolder>

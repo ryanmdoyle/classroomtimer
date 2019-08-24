@@ -13,7 +13,7 @@ const SettingsCog = styled.button`
   border-radius: 3rem;
   i {
     font-size: 2rem;
-    color: rgb(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255, 0.3);
   }
 `;
 
