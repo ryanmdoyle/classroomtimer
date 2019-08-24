@@ -5,6 +5,7 @@ import './App.css';
 import MainTimer from './components/MainTimer';
 import SettingsButton from './components/SettingsButton';
 import SettingsPanel from './components/SettingsPanel';
+import Clock from './components/Clock';
 
 const MainTimerHolder = styled.div`
   display: flex;
@@ -22,22 +23,18 @@ class App extends Component {
     };
   }
 
-  showSettings = () => {
-    // eslint-disable-next-line react/no-access-state-in-setstate
-    const displaySettings = !this.state.settings;
-    this.setState({
-      settings: displaySettings,
-    });
+  toggleSettings = () => {
+    this.setState((prevState) => ({ settings: !prevState.settings }));
   }
 
   render() {
-    // eslint-disable-next-line react/destructuring-assignment
-    const { settings } = this.state.settings;
+    const { settings } = this.state;
     return (
       <>
         {/* ADD SPRING HERE FOR SETTINGS DISPLAY */}
         {settings && <SettingsPanel />}
-        <SettingsButton showSettings={this.showSettings} />
+        <SettingsButton toggleSettings={this.toggleSettings} />
+        <Clock />
         <MainTimerHolder>
           <MainTimer />
         </MainTimerHolder>

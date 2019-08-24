@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const SettingsPanelStyled = styled.div`
   position: fixed;
+  z-index:1;
   width: 400px;
   height: 100vh;
   background-color: grey;

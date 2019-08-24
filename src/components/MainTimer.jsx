@@ -11,6 +11,7 @@ const MainTimerContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 50rem;
+  position: relative;
 `;
 
 class MainTimer extends Component {
@@ -25,7 +26,8 @@ class MainTimer extends Component {
   }
 
   adjustTimer = (seconds) => {
-    if (!this.state.running) {
+    const { running } = this.state;
+    if (!running) {
       this.setState({
         secondsLeft: seconds,
         halfway: seconds / 2,
@@ -34,8 +36,9 @@ class MainTimer extends Component {
   }
 
   addMinute = () => {
-    const secLeft = this.state.secondsLeft;
-    if (!this.state.running) {
+    const { running, secondsLeft } = this.state;
+    const secLeft = secondsLeft;
+    if (!running) {
       if (secLeft % 60 !== 0) {
         this.setState({
           secondsLeft: Math.ceil(secLeft / 60) * 60,
@@ -51,8 +54,9 @@ class MainTimer extends Component {
   }
 
   subMinute = () => {
-    const secLeft = this.state.secondsLeft;
-    if (!this.state.running && this.state.secondsLeft > 60) {
+    const { running, secondsLeft } = this.state;
+    const secLeft = secondsLeft;
+    if (!running && secondsLeft > 60) {
       if (secLeft % 60 !== 0) {
         this.setState({
           secondsLeft: Math.floor(secLeft / 60) * 60,
@@ -68,14 +72,15 @@ class MainTimer extends Component {
   }
 
   runTimer = () => {
-    if (this.state.running === true && this.state.secondsLeft > 0) {
-      if (this.state.secondsLeft === this.state.halfway + 1) {
+    const { running, secondsLeft, halfway } = this.state;
+    if (running === true && secondsLeft > 0) {
+      if (secondsLeft === halfway + 1) {
         const halfwaySound = new Audio(midGong);
         halfwaySound.play();
       }
-      this.setState(prevState => ({ secondsLeft: prevState.secondsLeft - 1 }));
+      this.setState((prevState) => ({ secondsLeft: prevState.secondsLeft - 1 }));
     }
-    if (this.state.secondsLeft === 0 && this.state.running === true) {
+    if (secondsLeft === 0 && running === true) {
       this.setState({
         running: false,
       });
@@ -86,15 +91,16 @@ class MainTimer extends Component {
   }
 
   startStop = () => {
-    if (this.state.running) {
+    const { running, secondsLeft } = this.state;
+    if (running) {
       this.setState({
         running: false,
       });
       clearInterval(this.interval);
     }
 
-    if (!this.state.running && this.state.secondsLeft !== 0) {
-      this.setState(prevState => (
+    if (!running && secondsLeft !== 0) {
+      this.setState((prevState) => (
         {
           running: true,
           halfway: prevState.halfway / 2,

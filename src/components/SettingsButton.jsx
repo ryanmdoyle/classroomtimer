@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const SettingsCog = styled.button`
   position: fixed;
+  z-index: 2;
   margin: 1rem;
   background: none;
   width: 3rem;
@@ -16,14 +17,14 @@ const SettingsCog = styled.button`
   }
 `;
 
-const SettingsButton = ({ showSettings }) => (
-  <SettingsCog onClick={() => { showSettings(); }}>
+const SettingsButton = ({ toggleSettings }) => (
+  <SettingsCog onClick={() => { toggleSettings(); }}>
     <i className="fa fa-cog" />
   </SettingsCog>
 );
 
 SettingsButton.propTypes = {
-  showSettings: PropTypes.bool.isRequired,
+  toggleSettings: PropTypes.bool.isRequired,
 };
 
 export default SettingsButton;

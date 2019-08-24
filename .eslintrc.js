@@ -7,11 +7,11 @@ module.exports = {
   extends: [
     'airbnb',
   ],
-  parser: 'babel-eslint',
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: "babel-eslint",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -23,6 +23,5 @@ module.exports = {
     'react',
   ],
   rules: {
-    "react/destructuring-assignment": [1, "always", { "ignoreClassFields": true }]
   },
 };
