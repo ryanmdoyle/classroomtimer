@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Clock = () => {
-  const [hours, setHour] = useState(0);
+  const [hours, setHour] = useState(12);
   const [mins, setMin] = useState(0);
+  const [hasTime, setHasTime] = useState(false);
 
   setInterval(() => {
     const date = new Date();
@@ -11,12 +12,21 @@ const Clock = () => {
     const minute = date.getMinutes();
     setHour(hour);
     setMin(minute);
+    setHasTime(true);
   }, 1000);
 
+  if (hasTime) {
+    return (
+      <ClockStyled>
+        {`
+        ${hours < 13 ? hours : hours - 12}:${mins > 9 ? mins : `0${mins}`} 
+        ${(hours < 13 ? 'am' : 'pm')}
+        `}
+      </ClockStyled>
+    );
+  }
   return (
-    <ClockStyled>
-      {`${hours}:${mins}`}
-    </ClockStyled>
+    <ClockStyled />
   );
 };
 

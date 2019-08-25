@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Toogle = () => (
+const Toggle = () => (
   <ToggleStyles>
     <label className="switch" htmlFor="checkbox">
       <input id="checkbox" type="checkbox" />
@@ -75,4 +75,4 @@ const ToggleStyles = styled.div`
   }
 `;
 
-export default Toogle;
+export default Toggle;

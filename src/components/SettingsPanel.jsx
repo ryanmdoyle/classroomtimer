@@ -1,21 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ShowClock from './settings/ShowClock';
+import BackgroundColor from './settings/BackgroundColor';
+
 const SettingsPanel = () => (
   <SettingsPanelStyled>
-    <p>Choose background colors:</p>
-    <div>
-      <label htmlFor="primary">
-        Primary Color
-        <input type="color" id="primary" name="primary" value="#e66465" />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="secondary">
-        Secondary Color
-        <input type="color" id="secondary" name="secondary" value="#f6b73c" />
-      </label>
-    </div>
+    <ShowClock />
+    <BackgroundColor />
   </SettingsPanelStyled>
 );
 
@@ -24,10 +16,11 @@ const SettingsPanelStyled = styled.div`
   z-index:1;
   width: 400px;
   height: 100vh;
-  background-color: grey;
+  background-color: rgb(0, 0, 0, 0.8);
   color: white;
-  padding-top: 4rem;
+  padding: 4rem 1rem 1rem 1rem;
   box-shadow: 0 0 3rem 0 black;
+  font-size: 1rem;
 `;
 
 export default SettingsPanel;

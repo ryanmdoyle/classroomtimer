@@ -13,7 +13,7 @@ const TimerButtonStyled = styled.button`
 
   transition: background-color 0.3s;
   :hover {
-    background-color: ${props => (props.red ? 'rgb(255, 51, 51, 0.2)' : 'rgb(255, 255, 255, 0.2)')};
+    background-color: ${(props) => (props.red ? 'rgb(255, 51, 51, 0.2)' : 'rgb(255, 255, 255, 0.2)')};
     transition: background-color 0.3s;
   }
 `;
