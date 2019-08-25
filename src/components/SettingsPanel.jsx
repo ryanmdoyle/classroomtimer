@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import ShowClock from './settings/ShowClock';
 import BackgroundColor from './settings/BackgroundColor';
 
-const SettingsPanel = () => (
+const SettingsPanel = ({ toggleClock }) => (
   <SettingsPanelStyled>
-    <ShowClock />
+    <ShowClock toggleClock={toggleClock} />
     <BackgroundColor />
   </SettingsPanelStyled>
 );
@@ -22,5 +23,9 @@ const SettingsPanelStyled = styled.div`
   box-shadow: 0 0 3rem 0 black;
   font-size: 1rem;
 `;
+
+SettingsPanel.propTypes = {
+  toggleClock: PropTypes.func.isRequired,
+};
 
 export default SettingsPanel;

@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const Toggle = () => (
+const Toggle = ({ toggle }) => (
   <ToggleStyles>
     <label className="switch" htmlFor="checkbox">
-      <input id="checkbox" type="checkbox" />
+      <input id="checkbox" type="checkbox" onClick={() => { toggle(); }} />
       <span className="slider round" />
     </label>
   </ToggleStyles>
@@ -74,5 +75,9 @@ const ToggleStyles = styled.div`
     border-radius: 50%;
   }
 `;
+
+Toggle.propTypes = {
+  toggle: PropTypes.func.isRequired,
+};
 
 export default Toggle;

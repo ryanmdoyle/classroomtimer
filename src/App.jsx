@@ -19,26 +19,33 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      settings: false,
+      showSettings: false,
+      showClock: false,
     };
   }
 
   toggleSettings = () => {
-    this.setState((prevState) => ({ settings: !prevState.settings }));
+    this.setState((prevState) => ({ showSettings: !prevState.showSettings }));
+  }
+
+  toggleClock = () => {
+    this.setState(((prevState) => ({ showClock: !prevState.showClock })));
   }
 
   render() {
-    const { settings } = this.state;
+    const { showSettings } = this.state;
 
     return (
       <>
         {/* ADD SPRING HERE FOR SETTINGS DISPLAY */}
-        {settings
+        {showSettings
           && (
-          <SettingsPanel />
+          <SettingsPanel
+            toggleClock={this.toggleClock}
+          />
           )}
         <SettingsButton toggleSettings={this.toggleSettings} />
-        <Clock />
+        {this.showClock && <Clock />}
         <MainTimerHolder>
           <MainTimer />
         </MainTimerHolder>
