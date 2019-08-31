@@ -13,6 +13,7 @@ const MainTimerHolder = styled.div`
   height: 100vh;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(${(props) => props.backgroundColors});
 `;
 
 class App extends Component {
@@ -21,6 +22,8 @@ class App extends Component {
     this.state = {
       showSettings: false,
       showClock: false,
+      primaryColor: '#23ce7f',
+      secondaryColor: '#a451c8',
     };
   }
 
@@ -33,7 +36,11 @@ class App extends Component {
   }
 
   render() {
-    const { showSettings, showClock } = this.state;
+    const {
+      showSettings, showClock, primaryColor, secondaryColor,
+    } = this.state;
+
+    const backgroundColors = `112deg, ${primaryColor} 9%, ${secondaryColor} 100%`;
 
     return (
       <>
@@ -46,7 +53,9 @@ class App extends Component {
           )}
         <SettingsButton toggleSettings={this.toggleSettings} />
         <Clock showClock={showClock} />
-        <MainTimerHolder>
+        <MainTimerHolder
+          backgroundColors={backgroundColors}
+        >
           <MainTimer />
         </MainTimerHolder>
       </>
