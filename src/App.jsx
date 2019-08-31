@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   render() {
-    const { showSettings } = this.state;
+    const { showSettings, showClock } = this.state;
 
     return (
       <>
@@ -45,7 +45,7 @@ class App extends Component {
           />
           )}
         <SettingsButton toggleSettings={this.toggleSettings} />
-        {this.showClock && <Clock />}
+        <Clock showClock={showClock} />
         <MainTimerHolder>
           <MainTimer />
         </MainTimerHolder>

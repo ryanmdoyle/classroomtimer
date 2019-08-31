@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const Clock = () => {
+const Clock = ({ showClock }) => {
   const [hours, setHour] = useState(12);
   const [mins, setMin] = useState(0);
   const [hasTime, setHasTime] = useState(false);
@@ -15,18 +16,21 @@ const Clock = () => {
     setHasTime(true);
   }, 1000);
 
-  if (hasTime) {
+  const timeString = `
+    ${hours < 13 ? hours : hours - 12}:${mins > 9 ? mins : `0${mins}`} 
+    ${(hours < 13 ? 'am' : 'pm')}
+  `;
+
+  if (showClock) {
     return (
       <ClockStyled>
-        {`
-        ${hours < 13 ? hours : hours - 12}:${mins > 9 ? mins : `0${mins}`} 
-        ${(hours < 13 ? 'am' : 'pm')}
-        `}
+        {hasTime ? timeString : '...'}
       </ClockStyled>
     );
   }
   return (
-    <ClockStyled />
+    <>
+    </>
   );
 };
 
@@ -38,5 +42,9 @@ const ClockStyled = styled.div`
   font-size: 3rem;
   font-weight: bold;
 `;
+
+Clock.propTypes = {
+  showClock: PropTypes.bool.isRequired,
+};
 
 export default Clock;
