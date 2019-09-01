@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Toggle = ({ toggle }) => (
+const Toggle = ({ toggle, isActive }) => (
   <ToggleStyles>
     <label className="switch" htmlFor="checkbox">
-      <input id="checkbox" type="checkbox" onClick={() => { toggle(); }} />
+      <input id="checkbox" type="checkbox" checked={isActive} onClick={() => { toggle(); }} />
       <span className="slider round" />
     </label>
   </ToggleStyles>
@@ -78,6 +78,7 @@ const ToggleStyles = styled.div`
 
 Toggle.propTypes = {
   toggle: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 export default Toggle;

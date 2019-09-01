@@ -28,8 +28,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const primaryInitial = localStorage.getItem('primaryColor');
-    const secondaryInitial = localStorage.getItem('secondaryColor');
+    let primaryInitial = localStorage.getItem('primaryColor');
+    let secondaryInitial = localStorage.getItem('secondaryColor');
+    if (!primaryInitial) {
+      localStorage.setItem('primaryColor', '#23ce7f');
+      primaryInitial = localStorage.getItem('primaryColor');
+    }
+    if (!secondaryInitial) {
+      localStorage.setItem('secondaryColor', '#a451c8');
+      secondaryInitial = localStorage.getItem('secondaryColor');
+    }
     this.setState({
       primaryColor: primaryInitial,
       secondaryColor: secondaryInitial,
@@ -65,6 +73,7 @@ class App extends Component {
           && (
           <SettingsPanel
             toggleClock={this.toggleClock}
+            showClock={showClock}
             modifyBackground={this.modifyBackground}
           />
           )}
