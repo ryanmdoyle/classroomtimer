@@ -26,13 +26,13 @@ const ButtonsContainer = (props) => {
   return (
     <ButtonsRowStyled>
       <StartStopButton startStop={startStop} running={running} />
+      <SubMinButton subMinute={subMinute} running={running} />
+      <AddMinButton addMinute={addMinute} running={running} />
       <TimingButton min={3} adjustTimer={adjustTimer} running={running} />
       <TimingButton min={5} adjustTimer={adjustTimer} running={running} />
       <TimingButton min={10} adjustTimer={adjustTimer} running={running} />
       <TimingButton min={15} adjustTimer={adjustTimer} running={running} />
       <TimingButton min={20} adjustTimer={adjustTimer} running={running} />
-      <SubMinButton subMinute={subMinute} running={running} />
-      <AddMinButton addMinute={addMinute} running={running} />
     </ButtonsRowStyled>
   );
 };

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import formatTime from '../utils/formatTime';
+
 const Clock = ({ showClock }) => {
   const [hours, setHour] = useState(12);
   const [mins, setMin] = useState(0);
@@ -16,15 +18,11 @@ const Clock = ({ showClock }) => {
     setHasTime(true);
   }, 1000);
 
-  const timeString = `
-    ${hours < 13 ? hours : hours - 12}:${mins > 9 ? mins : `0${mins}`} 
-    ${(hours < 13 ? 'am' : 'pm')}
-  `;
 
   if (showClock) {
     return (
       <ClockStyled>
-        {hasTime ? timeString : '...'}
+        {hasTime ? formatTime(hours, mins) : '---'}
       </ClockStyled>
     );
   }
