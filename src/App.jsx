@@ -27,6 +27,15 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    const primaryInitial = localStorage.getItem('primaryColor');
+    const secondaryInitial = localStorage.getItem('secondaryColor');
+    this.setState({
+      primaryColor: primaryInitial,
+      secondaryColor: secondaryInitial,
+    });
+  }
+
   toggleSettings = () => {
     this.setState((prevState) => ({ showSettings: !prevState.showSettings }));
   }
@@ -35,12 +44,11 @@ class App extends Component {
     this.setState(((prevState) => ({ showClock: !prevState.showClock })));
   }
 
-  modifyBackground = (type, color) => {
-    if (type === 'primary') {
-      this.setState({ primaryColor: color });
-    } else if (type === 'secondary') {
-      this.setState({ secondaryColor: color });
-    }
+  modifyBackground = (e) => {
+    const { id, value } = e;
+    const key = `${id}Color`;
+    this.setState({ [key]: `${value}` });
+    localStorage.setItem(key, value);
   }
 
   render() {

@@ -8,7 +8,7 @@ import BackgroundColor from './settings/BackgroundColor';
 const SettingsPanel = ({ toggleClock, modifyBackground }) => (
   <SettingsPanelStyled>
     <ShowClock toggleClock={toggleClock} />
-    {/* <BackgroundColor modifyBackground={modifyBackground} /> */}
+    <BackgroundColor modifyBackground={modifyBackground} />
   </SettingsPanelStyled>
 );
 

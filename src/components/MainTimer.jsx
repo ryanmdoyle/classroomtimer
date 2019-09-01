@@ -105,7 +105,7 @@ class MainTimer extends Component {
           running: true,
           halfway: prevState.halfway / 2,
         }));
-      this.interval = setInterval(this.runTimer, 300); // change time to 1000 after dev
+      this.interval = setInterval(this.runTimer, 1000);
     }
   }
 
