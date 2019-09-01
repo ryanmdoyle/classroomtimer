@@ -24,7 +24,7 @@ const SettingsButton = ({ toggleSettings }) => (
 );
 
 SettingsButton.propTypes = {
-  toggleSettings: PropTypes.bool.isRequired,
+  toggleSettings: PropTypes.func.isRequired,
 };
 
 export default SettingsButton;

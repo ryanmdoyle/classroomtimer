@@ -13,7 +13,7 @@ const MainTimerHolder = styled.div`
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(${(props) => props.backgroundColors});
+  background: linear-gradient(${(props) => props.backgroundColors});
 `;
 
 class App extends Component {
@@ -35,6 +35,14 @@ class App extends Component {
     this.setState(((prevState) => ({ showClock: !prevState.showClock })));
   }
 
+  modifyBackground = (type, color) => {
+    if (type === 'primary') {
+      this.setState({ primaryColor: color });
+    } else if (type === 'secondary') {
+      this.setState({ secondaryColor: color });
+    }
+  }
+
   render() {
     const {
       showSettings, showClock, primaryColor, secondaryColor,
@@ -49,6 +57,7 @@ class App extends Component {
           && (
           <SettingsPanel
             toggleClock={this.toggleClock}
+            modifyBackground={this.modifyBackground}
           />
           )}
         <SettingsButton toggleSettings={this.toggleSettings} />
