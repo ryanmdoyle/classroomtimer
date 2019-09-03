@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import TimerDisplay from './TimerDisplay';
 import ButtonsContianer from './ButtonsContainer';
@@ -21,7 +22,6 @@ class MainTimer extends Component {
       secondsLeft: 0,
       running: false,
       halfway: 0,
-      // halfAlert: false, // add logic in for turning halfway gong  on/off
     };
   }
 
@@ -76,16 +76,18 @@ class MainTimer extends Component {
     if (running === true && secondsLeft > 0) {
       if (secondsLeft === halfway + 1) {
         const halfwaySound = new Audio(midGong);
-        halfwaySound.play();
+        if (this.props.isSoundOn) halfwaySound.play();
       }
       this.setState((prevState) => ({ secondsLeft: prevState.secondsLeft - 1 }));
+    }
+    if (secondsLeft === 1 && running === true) {
+      const endSound = new Audio(endGong);
+      if (this.props.isSoundOn) endSound.play();
     }
     if (secondsLeft === 0 && running === true) {
       this.setState({
         running: false,
       });
-      const endSound = new Audio(endGong);
-      endSound.play();
       clearInterval(this.interval);
     }
   }
@@ -103,7 +105,7 @@ class MainTimer extends Component {
       this.setState((prevState) => (
         {
           running: true,
-          halfway: prevState.halfway / 2,
+          halfway: prevState.secondsLeft / 2,
         }));
       this.interval = setInterval(this.runTimer, 1000);
     }
@@ -125,5 +127,9 @@ class MainTimer extends Component {
     );
   }
 }
+
+MainTimer.propTypes = {
+  isSoundOn: PropTypes.bool.isRequired,
+};
 
 export default MainTimer;

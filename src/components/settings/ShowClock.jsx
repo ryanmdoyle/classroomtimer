@@ -11,6 +11,7 @@ const ShowClock = ({ toggleClock, isShown }) => (
       <Toggle
         toggle={toggleClock}
         isActive={isShown}
+        toggleId='clock-toggle'
       />
     </span>
   </SettingContainerStyled>

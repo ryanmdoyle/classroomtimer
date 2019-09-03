@@ -4,21 +4,22 @@ import PropTypes from 'prop-types';
 import SettingContainerStyled from '../styledComponents/SettingContainerStyled';
 import Toggle from '../styledComponents/Toggle';
 
-const Sounds = ({ toggleSounds, soundsOn }) => (
+const Sounds = ({ toggleSound, isSoundOn }) => (
   <SettingContainerStyled>
     <h3>Sounds</h3>
     <span>
       <Toggle
-        toggle={toggleSounds}
-        isActive={soundsOn}
+        toggle={toggleSound}
+        isActive={isSoundOn}
+        toggleId='sounds-toggle'
       />
     </span>
   </SettingContainerStyled>
 );
 
 Sounds.propTypes = {
-  toggleSounds: PropTypes.func.isRequired,
-  soundsOn: PropTypes.bool.isRequired,
+  toggleSound: PropTypes.func.isRequired,
+  isSoundOn: PropTypes.bool.isRequired,
 };
 
 export default Sounds;

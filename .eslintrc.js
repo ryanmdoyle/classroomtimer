@@ -25,6 +25,8 @@ module.exports = {
   ],
   rules: {
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "jsx-quotes": 0,
+    "react/destructuring-assignment": [2, "always", { "ignoreClassFields": true }]
   },
 };
