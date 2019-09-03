@@ -22,6 +22,7 @@ class App extends Component {
     this.state = {
       showSettings: false,
       showClock: false,
+      isSoundOn: true,
       primaryColor: '#23ce7f',
       secondaryColor: '#a451c8',
     };
@@ -49,7 +50,11 @@ class App extends Component {
   }
 
   toggleClock = () => {
-    this.setState(((prevState) => ({ showClock: !prevState.showClock })));
+    this.setState((prevState) => ({ showClock: !prevState.showClock }));
+  }
+
+  toggleSound = () => {
+    this.setState((prevState) => ({ isSoundOn: !prevState.isSoundOn }));
   }
 
   modifyBackground = (e) => {
@@ -61,7 +66,7 @@ class App extends Component {
 
   render() {
     const {
-      showSettings, showClock, primaryColor, secondaryColor,
+      showSettings, showClock, primaryColor, secondaryColor, isSoundOn,
     } = this.state;
 
     const backgroundColors = `112deg, ${primaryColor} 9%, ${secondaryColor} 100%`;
@@ -75,6 +80,8 @@ class App extends Component {
             toggleClock={this.toggleClock}
             showClock={showClock}
             modifyBackground={this.modifyBackground}
+            isSoundOn={isSoundOn}
+            toggleSound={this.toggleSound}
           />
           )}
         <SettingsButton toggleSettings={this.toggleSettings} />
@@ -82,7 +89,7 @@ class App extends Component {
         <MainTimerHolder
           backgroundColors={backgroundColors}
         >
-          <MainTimer />
+          <MainTimer isSoundOn={isSoundOn} />
         </MainTimerHolder>
       </>
     );
