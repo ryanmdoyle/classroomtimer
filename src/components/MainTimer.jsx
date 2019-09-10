@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 import TimerDisplay from './TimerDisplay';
 import ButtonsContianer from './ButtonsContainer';
 import endGong from '../midGong.m4a';
 import midGong from '../endGong.m4a';
-
-const MainTimerContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50rem;
-  position: relative;
-`;
 
 class MainTimer extends Component {
   constructor(props) {
@@ -127,6 +119,29 @@ class MainTimer extends Component {
     );
   }
 }
+
+const TimerKeyframes = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const MainTimerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50rem;
+  position: relative;
+
+  animation-name: ${TimerKeyframes};
+  animation-duration: 2s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-out;
+`;
 
 MainTimer.propTypes = {
   isSoundOn: PropTypes.bool.isRequired,

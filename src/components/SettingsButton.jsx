@@ -15,6 +15,9 @@ const SettingsCog = styled.button`
     font-size: 2rem;
     color: rgb(255, 255, 255, 0.3);
   }
+  :focus {
+    outline: 0;
+  }
 `;
 
 const SettingsButton = ({ toggleSettings }) => (

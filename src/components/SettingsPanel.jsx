@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 import ShowClock from './settings/ShowClock';
@@ -16,6 +16,15 @@ const SettingsPanel = ({
   </SettingsPanelStyled>
 );
 
+const SettingsPanelKeyframes = keyframes`
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 400px;
+  }
+`;
+
 const SettingsPanelStyled = styled.div`
   position: fixed;
   z-index:1;
@@ -26,6 +35,11 @@ const SettingsPanelStyled = styled.div`
   padding: 4rem 1rem 1rem 1rem;
   box-shadow: 0 0 3rem 0 black;
   font-size: 1rem;
+
+  animation-name: ${SettingsPanelKeyframes};
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
 `;
 
 SettingsPanel.propTypes = {
