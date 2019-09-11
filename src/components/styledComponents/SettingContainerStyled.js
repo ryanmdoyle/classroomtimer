@@ -15,6 +15,7 @@ const SettingContainerStyled = styled.div`
     position: relative;
     float: right;
   }
+  transition: background-color 0.5s;
 `;
 
 export default SettingContainerStyled;

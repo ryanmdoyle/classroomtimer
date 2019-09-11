@@ -10,9 +10,11 @@ const SettingsPanel = ({
   toggleClock, modifyBackground, showClock, isSoundOn, toggleSound,
 }) => (
   <SettingsPanelStyled>
-    <ShowClock toggleClock={toggleClock} isShown={showClock} />
-    <BackgroundColor modifyBackground={modifyBackground} />
-    <Sounds toggleSound={toggleSound} isSoundOn={isSoundOn} />
+    <SettingsFadeInContainer>
+      <ShowClock toggleClock={toggleClock} isShown={showClock} />
+      <BackgroundColor modifyBackground={modifyBackground} />
+      <Sounds toggleSound={toggleSound} isSoundOn={isSoundOn} />
+    </SettingsFadeInContainer>
   </SettingsPanelStyled>
 );
 
@@ -40,6 +42,22 @@ const SettingsPanelStyled = styled.div`
   animation-duration: 0.2s;
   animation-timing-function: ease-out;
   animation-iteration-count: 1;
+`;
+
+const SettingsFadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const SettingsFadeInContainer = styled.div`
+  animation-name: ${SettingsFadeIn};
+  animation-fill-mode: backwards;
+  animation-duration: 0.5s;
+  animation-delay: 0.2s;
 `;
 
 SettingsPanel.propTypes = {

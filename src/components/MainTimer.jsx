@@ -137,9 +137,9 @@ const MainTimerContainer = styled.div`
   position: relative;
 
   animation-name: ${TimerKeyframes};
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-fill-mode: backwards;
-  animation-delay: 0.5s;
+  animation-delay: 0.3s;
   animation-timing-function: ease-out;
 `;
 
