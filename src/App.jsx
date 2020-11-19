@@ -31,6 +31,7 @@ class App extends Component {
   componentDidMount() {
     let primaryInitial = localStorage.getItem('primaryColor');
     let secondaryInitial = localStorage.getItem('secondaryColor');
+    const soundsInitial = localStorage.getItem('sounds');
     if (!primaryInitial) {
       localStorage.setItem('primaryColor', '#23ce7f');
       primaryInitial = localStorage.getItem('primaryColor');
@@ -39,9 +40,11 @@ class App extends Component {
       localStorage.setItem('secondaryColor', '#a451c8');
       secondaryInitial = localStorage.getItem('secondaryColor');
     }
+    const soundsBool = soundsInitial === 'true';
     this.setState({
       primaryColor: primaryInitial,
       secondaryColor: secondaryInitial,
+      isSoundOn: soundsBool,
     });
   }
 
@@ -54,7 +57,10 @@ class App extends Component {
   }
 
   toggleSound = () => {
-    this.setState((prevState) => ({ isSoundOn: !prevState.isSoundOn }));
+    this.setState((prevState) => {
+      localStorage.setItem('sounds', !prevState.isSoundOn);
+      return { isSoundOn: !prevState.isSoundOn };
+    });
   }
 
   modifyBackground = (e) => {
@@ -70,19 +76,18 @@ class App extends Component {
     } = this.state;
 
     const backgroundColors = `112deg, ${primaryColor} 9%, ${secondaryColor} 100%`;
-
+    console.log(isSoundOn);
     return (
       <>
-        {/* ADD SPRING HERE FOR SETTINGS DISPLAY */}
         {showSettings
           && (
-          <SettingsPanel
-            toggleClock={this.toggleClock}
-            showClock={showClock}
-            modifyBackground={this.modifyBackground}
-            isSoundOn={isSoundOn}
-            toggleSound={this.toggleSound}
-          />
+            <SettingsPanel
+              toggleClock={this.toggleClock}
+              showClock={showClock}
+              modifyBackground={this.modifyBackground}
+              isSoundOn={isSoundOn}
+              toggleSound={this.toggleSound}
+            />
           )}
         <SettingsButton toggleSettings={this.toggleSettings} />
         <Clock showClock={showClock} />
