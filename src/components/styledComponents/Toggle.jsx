@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Toggle = ({ toggle, isActive, toggleId }) => (
   <ToggleStyles>
     <label className="switch" htmlFor={toggleId}>
-      <input id={toggleId} type="checkbox" checked={isActive} onClick={() => { toggle(); }} />
+      <input id={toggleId} type="checkbox" checked={isActive} onChange={() => { toggle(); }} />
       <span className="slider round" />
     </label>
   </ToggleStyles>
